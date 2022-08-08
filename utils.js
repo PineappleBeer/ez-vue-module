@@ -8,6 +8,7 @@ class Utils {
          * 所以将根节点的innerHTML及根组件的script抽离出来，注册成一个新组件，这样才可以将根组件变成一个异步组件，但是同时script又不能在初始化vue实例时被执行。
          * 因此这里的思路就是新建一个key，用来记录根组件的option,这样在初始化vue实例的时候，也不会被执行 */
         if (this.$options.childComponent) {
+          this.$options.customizeComponents = {};
           let dom = document.querySelector('#app').innerHTML;
           let optionStr = '';
           for (let k in this.$options.childComponent) { //将根组件script拼接成字符串
@@ -24,8 +25,8 @@ class Utils {
           ];
           /**将拼接后的html及script转成blob对象，然后再给blob对象创建url，这样就可以像请求vue文件一样请求这些拼接后额字符串并组合成组件了 */
           let blobUrl = new Blob(vueFileStr, { type: 'text/html', endings: "transparent" });
-          document.querySelector('#app').innerHTML = '<app />';
-          this.$options.customizeComponents = { app: URL.createObjectURL(blobUrl) };
+          document.querySelector('#app').innerHTML = `<app_${this._uid} />`;
+          this.$options.customizeComponents['app_' + this._uid] = URL.createObjectURL(blobUrl);
         }
         let components = this.$options.customizeComponents, prefixUrl = this.$options.prefixUrl || '';
         for (let name in components) {
