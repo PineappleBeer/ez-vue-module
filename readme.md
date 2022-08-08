@@ -21,7 +21,7 @@
 * 需要兼容旧版本浏览器。（如果不需要兼容，可以了解一些[ES Module的使用技巧](https://juejin.cn/post/7070339012933713956)，万一用得上呢）
 
 # demo
-整个项目拉取下来就是一个demo，只需要启动一个**web服务器**，以index.html作为入口即可跑起来。
+整个项目拉取下来就是一个demo，只需要启动一个**web服务器**，以index.html作为入口即可跑起来。[在线查看](https://pineapplebeer.github.io/ez-vue-module/)
 
 # 食用方法
 
