@@ -112,11 +112,7 @@ class Utils {
         createStyle(style[0].innerHTML);
       }
 
-      if (option.length == 0) {
-        return
-      }
-
-      let optionFn = this.evil(formateStatement(option[0].innerHTML)); //得到函数体
+      let optionFn = option.length === 0 ? {} : this.evil(formateStatement(option[0].innerHTML)); //得到函数体
       let srcList = []; //需要请求的文件路径集合
       let asyncArr = []; //请求文件的promise集合
       let prefixUrl = optionFn.prefixUrl || '';
