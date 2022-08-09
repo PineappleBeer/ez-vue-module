@@ -66,9 +66,13 @@ class Utils {
     }
     let res = undefined;
     try {
-      res = new Function(`return (${fn})`)();
-    } catch (error) {
-      res = new Function(`return (${fn})`);
+      res = new Function(`return (${fn})`)()();
+    } catch (er) {
+      try{
+        res = new Function(`return (${fn})`)();
+      } catch (err) {
+        res = new Function(`return (${fn})`);      
+      }
     }
     return res;
   }
