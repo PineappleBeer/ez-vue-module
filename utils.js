@@ -20,7 +20,7 @@ class Utils {
             }
           }
           let vueFileStr = [
-            `<template>${dom}</template>
+            `<template><div id="app_${this._uid}">${dom}</div></template>
             <script>{${optionStr}}</script>`
           ];
           /**将拼接后的html及script转成blob对象，然后再给blob对象创建url，这样就可以像请求vue文件一样请求这些拼接后额字符串并组合成组件了 */
