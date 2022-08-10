@@ -48,7 +48,7 @@ class Utils {
     xhr.open('GET', url, true);
     return new Promise((resolve) => {
       xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304) {
+        if (xhr.readyState == 4 && (xhr.status == 0 || hr.status == 200 || xhr.status == 304)){
           resolve(xhr.responseText);
         }
       };
